@@ -20,9 +20,6 @@ use Illuminate\Support\Facades\Route;
 //Public routes
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
-Route::get('/gifs/search', [GifController::class, 'search']);
-Route::get('/articles', [ArticleController::class, 'index']);
-Route::get('/articles/slug/{title}', [ArticleController::class, 'find']);
 
 //Protected routes
 Route::group(
@@ -30,11 +27,6 @@ Route::group(
         'middleware' => ['auth:api']
     ],
     function () {
-        Route::get('/user/check', [AuthController::class, 'checkAuth']);
         Route::post('/logout', [AuthController::class, 'logout']);
-
-        Route::get('/admin/articles', [ArticleController::class, 'getMyArticles']);
-        Route::post('/admin/articles/gifs/add/{id}', [ArticleController::class, 'uploadGifs']);
-        Route::post('/admin/articles', [ArticleController::class, 'store']);
     }
 );

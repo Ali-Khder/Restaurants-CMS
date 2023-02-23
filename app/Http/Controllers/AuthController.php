@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\auth\LoginRequest;
+use App\Http\Requests\auth\RegisterRequest;
 use App\Http\Traits\ResponseTrait;
 use App\Services\AuthService;
 use Illuminate\Http\Request;
@@ -17,17 +19,18 @@ class AuthController extends Controller
      */
     protected $authService;
 
+    // singlton pattern
     public function __construct(AuthService $authService)
     {
         $this->authService = $authService;
     }
 
-    public function register(Request $request)
+    public function register(RegisterRequest $request)
     {
         return $this->authService->register($request);
     }
 
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
         return $this->authService->login($request);
     }
@@ -35,10 +38,5 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         return $this->authService->logout($request);
-    }
-
-    public function checkAuth()
-    {
-        return response("You are authenticated", 200);
     }
 }

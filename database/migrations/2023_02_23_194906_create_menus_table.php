@@ -13,15 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('gifs', function (Blueprint $table) {
-            $table->id();
-            $table->string('path');
-            $table->integer("article_id")->unsigned();
-
-            $table->foreign("article_id")
-                ->references('id')
-                ->on('articles')
-                ->onDelete('cascade');
+        Schema::create('menus', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -33,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gifs');
+        Schema::dropIfExists('menus');
     }
 };

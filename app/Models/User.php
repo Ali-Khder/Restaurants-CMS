@@ -4,7 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'menu_id'
     ];
 
     /**
@@ -43,9 +44,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function articles(): HasMany
+    public function menu(): HasOne
     {
-        return $this->hasMany(Article::class, 'author_id');
-        //Or: return $this->hasMany(Post::class, 'foreign_key');
+        return $this->hasOne(menu::class, 'menu_id');
     }
 }
