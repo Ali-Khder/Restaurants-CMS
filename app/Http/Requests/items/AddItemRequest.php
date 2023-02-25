@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\categories;
+namespace App\Http\Requests\items;
 
 use App\Http\Requests\BaseRequest;
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddCategoryRequest extends BaseRequest
+class AddItemRequest extends BaseRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,8 @@ class AddCategoryRequest extends BaseRequest
     {
         return [
             'name' => 'required|string|min:3|max:25',
-            'parent_id' => 'numeric|exists:categories,id',
+            'category_id' => 'required|numeric|min:1|exists:categories,id',
+            'price' => 'required|numeric|min:1',
             'discount' => 'numeric|max:99'
         ];
     }

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('name');
             $table->decimal('price');
+            $table->integer('discount')->default(0);
             $table->integer('category_id')->unsigned()->nullable();
 
             $table->foreign('category_id')

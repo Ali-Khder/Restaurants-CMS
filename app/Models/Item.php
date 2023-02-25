@@ -10,9 +10,12 @@ class Item extends BaseModel
 {
     use HasFactory;
 
+    protected $table = 'items';
+
     protected $fillable = [
         'name',
         'price',
+        'discount',
         'category_id'
     ];
 

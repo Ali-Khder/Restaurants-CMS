@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
@@ -11,8 +10,11 @@ class Menu extends BaseModel
 {
     use HasFactory;
 
+    protected $table = 'menus';
+
     protected $fillable = [
-        'name'
+        'name',
+        'discount'
     ];
 
     public function user(): BelongsTo

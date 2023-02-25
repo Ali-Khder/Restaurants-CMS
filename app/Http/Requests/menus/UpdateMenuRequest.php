@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Requests\categories;
+namespace App\Http\Requests\menus;
 
-use App\Http\Requests\BaseRequest;
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddCategoryRequest extends BaseRequest
+class UpdateMenuRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,7 +13,7 @@ class AddCategoryRequest extends BaseRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -25,9 +24,7 @@ class AddCategoryRequest extends BaseRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|min:3|max:25',
-            'parent_id' => 'numeric|exists:categories,id',
-            'discount' => 'numeric|max:99'
+            //
         ];
     }
 }

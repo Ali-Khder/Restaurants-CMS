@@ -14,17 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->integer('menu_id')->unsigned()->nullable();
-
-            $table->foreign('menu_id')
-                ->references('id')
-                ->on('menus')
-                ->onDelete('cascade');
             $table->timestamps();
         });
     }

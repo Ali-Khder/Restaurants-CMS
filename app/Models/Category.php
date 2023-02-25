@@ -11,11 +11,13 @@ class Category extends BaseModel
 {
     use HasFactory;
 
-
+    protected $table = 'categories';
 
     protected $fillable = [
         'name',
-        'parent_id'
+        'parent_id',
+        'discount',
+        'child_level'
     ];
 
     public function items(): HasMany

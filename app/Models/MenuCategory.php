@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class MenuCategory extends BaseModel
 {
     use HasFactory;
+
+    protected $table = 'menus_categories';
 }

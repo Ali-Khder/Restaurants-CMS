@@ -4,14 +4,13 @@ namespace App\Services;
 
 use App\Http\Traits\ResponseTrait;
 use App\Models\User;
-use App\Services\Validations\AuthValidationService;
 use Illuminate\Http\Request;
 
 class AuthService
 {
     use ResponseTrait;
 
-    public function register(Request $request)
+    public function register($request)
     {
         $user = User::create([
             'name' => $request->username,
@@ -19,7 +18,7 @@ class AuthService
             'password' => bcrypt($request->password)
         ]);
 
-        $token = $user->createToken('RegirterToekn')->accessToken;
+        $token = $user->createToken('RegirterToken')->accessToken;
         $response = [
             'user' => $user,
             'token' => $token
@@ -27,7 +26,7 @@ class AuthService
         return $this->myresponse(true, 'Register Success', $response);
     }
 
-    public function login(Request $request)
+    public function login($request)
     {
         $data = [
             'email' => $request->email,
