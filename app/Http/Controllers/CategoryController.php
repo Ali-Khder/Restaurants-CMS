@@ -16,9 +16,9 @@ class CategoryController extends Controller
      *
      * @var CategoryService
      */
-    protected $categoryService;
+    protected CategoryService $categoryService;
 
-    // singlton pattern
+    // singleton pattern
     public function __construct(CategoryService $categoryService)
     {
         $this->categoryService = $categoryService;

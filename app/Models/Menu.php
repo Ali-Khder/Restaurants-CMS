@@ -22,6 +22,9 @@ class Menu extends BaseModel
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * The categories that belong to the menu.
+     */
     public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class, 'menu_categories');

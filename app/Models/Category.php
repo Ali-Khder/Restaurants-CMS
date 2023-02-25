@@ -25,6 +25,9 @@ class Category extends BaseModel
         return $this->hasMany(Item::class);
     }
 
+    /**
+     * The menus that belong to the categories.
+     */
     public function menus(): BelongsToMany
     {
         return $this->belongsToMany(Menu::class, 'menu_categories');

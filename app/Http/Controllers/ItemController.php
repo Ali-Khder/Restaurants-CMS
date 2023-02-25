@@ -17,9 +17,9 @@ class ItemController extends Controller
      *
      * @var ItemService
      */
-    protected $itemService;
+    protected ItemService $itemService;
 
-    // singlton pattern
+    // singleton pattern
     public function __construct(ItemService $itemService)
     {
         $this->itemService = $itemService;

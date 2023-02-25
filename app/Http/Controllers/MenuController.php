@@ -17,9 +17,9 @@ class MenuController extends Controller
      *
      * @var MenuService
      */
-    protected $menuService;
+    protected MenuService $menuService;
 
-    // singlton pattern
+    // singleton pattern
     public function __construct(MenuService $menuService)
     {
         $this->menuService = $menuService;
@@ -33,6 +33,11 @@ class MenuController extends Controller
     public function store(AddMenuRequest $request)
     {
         return $this->menuService->store($request);
+    }
+
+    public function show($id)
+    {
+        return $this->menuService->show($id);
     }
 
     public function update(UpdateMenuRequest $request, $id)

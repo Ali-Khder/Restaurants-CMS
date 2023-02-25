@@ -25,9 +25,7 @@ class AddMenuRequest extends BaseRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|min:3|max:25',
-            'parent_id' => 'numeric|min:1|exists:categories,id',
-            'discount' => 'numeric|min:1|max:99'
+            'name' => 'required|string|min:3|max:25'
         ];
     }
 }

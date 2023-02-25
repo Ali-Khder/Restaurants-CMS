@@ -17,9 +17,9 @@ class AuthController extends Controller
      *
      * @var AuthService
      */
-    protected $authService;
+    protected AuthService $authService;
 
-    // singlton pattern
+    // singleton pattern
     public function __construct(AuthService $authService)
     {
         $this->authService = $authService;
