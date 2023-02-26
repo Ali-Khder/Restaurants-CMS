@@ -9,8 +9,6 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    use ResponseTrait;
-
     /**
      * The auth service implementation.
      *

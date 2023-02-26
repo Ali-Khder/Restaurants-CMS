@@ -10,8 +10,6 @@ use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
-    use ResponseTrait;
-
     /**
      * The auth service implementation.
      *

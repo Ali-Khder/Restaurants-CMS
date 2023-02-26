@@ -12,7 +12,7 @@
     <link href="{{ mix('/public/css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-<noscript><strong>We're sorry but media-app-vue doesn't work properly without JavaScript enabled. Please enable it to
+<noscript><strong>We're sorry but restaurant-vue doesn't work properly without JavaScript enabled. Please enable it to
         continue.</strong></noscript>
 <div id="app"></div>
 </body>

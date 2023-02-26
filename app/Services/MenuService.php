@@ -27,12 +27,16 @@ class MenuService
     public function store($request)
     {
         $user = User::find(auth()->user()->id);
+        $categories = $request->category;
         if (!$user->menu) {
             $menu = $user->menu()->create([
-                'name' => $request->name,
-                'discount' => 0,
+                'name' => $request->name
             ]);
-            $menu->categories()->attach($request->category);
+            $menu->categories()->attach($categories);
+
+            $discount = $this->getDiscount($categories);
+            $menu->discount = $discount;
+            $menu->save();
             return $this->myresponse(true, 'Creating Menu Success', $menu);
         } else
             return $this->myresponse(false, 'You already have a menu');
@@ -71,6 +75,8 @@ class MenuService
                 if (in_array($category, $menuIds)) continue;
                 $menu->categories()->attach($category);
             }
+            $menu->discount = $this->getDiscount($categoriesToAdd);
+            $menu->save();
         }
 
         return $this->myresponse(true, 'Updating Menu Success');
@@ -83,5 +89,17 @@ class MenuService
             return $this->myresponse(false, 'Menu not found');
         Menu::destroy($id);
         return $this->myresponse(true, 'Deleting Menu Success');
+    }
+
+    private function getDiscount($categories): float
+    {
+        $discount = 0;
+        $count = 0;
+        foreach ($categories as $category) {
+            $discount += Category::find($category)->discount;
+            $count++;
+        }
+        $discount /= $count;
+        return $discount;
     }
 }

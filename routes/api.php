@@ -1,5 +1,6 @@
 <?php
 
+use App\Actions\LogoutAdmin;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
@@ -8,6 +9,8 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\MenuController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use \App\Actions\RegisterAdmin;
+use \App\Actions\LoginAdmin;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,8 +24,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Public routes
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/register', RegisterAdmin::class);
+Route::post('/login', LoginAdmin::class);
 
 //Protected routes
 Route::group(
@@ -30,7 +33,7 @@ Route::group(
         'middleware' => ['auth:api']
     ],
     function () {
-        Route::post('/logout', [AuthController::class, 'logout']);
+        Route::post('/logout', LogoutAdmin::class);
 
         //categories
         Route::get('/categories', [CategoryController::class, 'index']);
